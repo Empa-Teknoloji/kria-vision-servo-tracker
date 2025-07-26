@@ -1,28 +1,32 @@
-# Dynamixel Motor Controller
+# Kria Vision Servo Tracker
 
-A Python-based control system for Dynamixel XL430-W250-T servo motors with keyboard input, network communication, and advanced motor control features.
+A real-time servo motor tracking system designed for AMD Kria FPGAs with Dynamixel XL430-W250-T servo motors, featuring computer vision integration, keyboard control, network communication, and advanced motor control capabilities.
 
 ## Features
 
-- **Real-time Motor Control**: Keyboard-driven control with customizable speed settings
-- **Network Communication**: Client-server architecture for remote motor control
-- **Position Limits**: Configurable safety boundaries to prevent motor damage
-- **PID Control**: Built-in PID tuning and preset management
-- **Motor Testing**: Comprehensive testing utilities for motor diagnostics
-- **Safety Features**: Emergency stop and limit checking
+- **🎯 Vision-Based Tracking**: Real-time computer vision integration for automated servo tracking
+- **🚀 AMD Kria Optimized**: Specifically designed for AMD Kria SOM and KV260 boards
+- **🎮 Real-time Motor Control**: Keyboard-driven control with customizable speed settings
+- **🌐 Network Communication**: UDP client-server architecture for remote motor control
+- **🛡️ Safety Systems**: Position limits and emergency stop with configurable boundaries
+- **⚙️ PID Control**: Built-in PID tuning and preset management for precise control
+- **🔧 Professional Testing**: Comprehensive motor diagnostics and testing utilities
+- **📦 Modular Architecture**: Clean, organized codebase with separation of concerns
 
 ## Hardware Requirements
 
-- Dynamixel XL430-W250-T servo motors
-- USB2Dynamixel adapter or U2D2
-- Compatible computer with USB port
+- **AMD Kria SOM** (KV260 or compatible Kria board)
+- **Dynamixel XL430-W250-T** servo motors
+- **USB2Dynamixel adapter** or **U2D2** communication interface
+- **Camera** (for vision tracking functionality)
+- **Network connection** (Ethernet/WiFi for remote operation)
 
 ## Installation
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/motor_controller.git
-   cd motor_controller
+   git clone https://github.com/Empa-Teknoloji/kria-vision-servo-tracker.git
+   cd kria-vision-servo-tracker
    ```
 
 2. Install required dependencies:
@@ -30,9 +34,16 @@ A Python-based control system for Dynamixel XL430-W250-T servo motors with keybo
    pip install -r requirements.txt
    ```
 
-3. Connect your Dynamixel motors via USB2Dynamixel adapter
+3. **For AMD Kria boards**: Ensure your Kria board is set up with Ubuntu and has network connectivity
 
-4. Update device configuration in `config.py` if needed
+4. Connect your Dynamixel motors via USB2Dynamixel adapter to the Kria board
+
+5. Connect your camera to the Kria board (USB or CSI)
+
+6. Update device configuration in `config/config.py` for your specific setup:
+   - Motor device path (e.g., `/dev/ttyUSB0`)
+   - Network settings for your environment
+   - Camera parameters if using vision tracking
 
 ## Quick Start
 
@@ -72,7 +83,7 @@ Use keyboard controls:
 ## Project Structure
 
 ```
-motor_controller/
+kria-vision-servo-tracker/
 ├── main.py                 # Main application entry point
 ├── requirements.txt        # Python dependencies
 ├── README.md              # This file
@@ -154,6 +165,18 @@ python tests/test_motor_directions.py  # Direction testing
 - **Velocity Unit**: 0.229 RPM per unit
 - **Communication**: TTL Half Duplex
 - **Default Baud Rate**: 57600 bps
+- **Torque**: 1.0 N⋅m (at 12V, 1.3A)
+- **Speed**: 47 RPM (at 12V, No Load)
+
+## AMD Kria Compatibility
+
+This project is optimized for AMD Kria System-on-Module (SOM) boards:
+
+- **Kria KV260**: Primary target platform
+- **Kria KR260**: Compatible with modifications
+- **Custom Kria designs**: Adaptable with configuration changes
+- **Ubuntu 20.04/22.04**: Recommended OS for Kria boards
+- **Vivado/Vitis**: Compatible with AMD development tools
 
 ## Troubleshooting
 
