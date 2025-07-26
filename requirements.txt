@@ -1,0 +1,2 @@
+dynamixel-sdk==3.7.31
+keyboard==0.13.5
